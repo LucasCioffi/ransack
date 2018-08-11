@@ -241,7 +241,7 @@ module Ransack
             end
           elsif ::ActiveRecord::VERSION::STRING == Constants::RAILS_5_2_0
             alias_tracker = ::ActiveRecord::Associations::AliasTracker.create(self.klass.connection, relation.table.name, join_list)
-            join_dependency = JoinDependency.new(relation.klass, relation.table, association_joins, alias_tracker)
+            join_dependency = JoinDependency.new(relation.klass, relation.table, association_joins)
             join_nodes.each do |join|
               join_dependency.send(:alias_tracker).aliases[join.left.name.downcase] = 1
             end
